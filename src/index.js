@@ -1,8 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+
+
+function myUseState(initState) {
+  let state = initState
+  function setState(newState) {
+    state = newState
+    render()
+  }
+  return [state, setState]
+}
+
+const render = () => {
+  ReactDOM.render(<App />, document.getElementById('root'))
+}
+
+const App = () => {
+  // 原 useState: const [n,setN] = useState(0)
+  const [state, setState] = myUseState(0)
+
+  return (
+    <div className="App">
+      n: {state}
+      <button onClick={() => setState(state + 1)}>+1</button>
+    </div>
+  );
+}
+
+
 
 ReactDOM.render(
   <React.StrictMode>
@@ -10,8 +36,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
