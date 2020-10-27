@@ -22,6 +22,7 @@ function myUseState(initState) {
 }
 
 const render = () => {
+  index = 0
   ReactDOM.render(<App />, document.getElementById('root'))
 }
 
@@ -29,6 +30,7 @@ const App = () => {
   // 原 useState: const [n,setN] = useState(0)
   const [state, setState] = myUseState(0)
   const [m, setM] = myUseState(0)
+  index = 0  // 这一次是为了清除 myUseState第一次渲染时调用的。
 
 
   return (
