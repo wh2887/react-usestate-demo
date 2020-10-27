@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 
 let _state
 function myUseState(initState) {
-  _state = _state || initState
+  _state = _state === undefined ? initState : _state
   console.log(_state)
   function setState(newState) {
     _state = newState
@@ -19,7 +19,7 @@ const render = () => {
 
 const App = () => {
   // 原 useState: const [n,setN] = useState(0)
-  const [state, setState] = myUseState(1)
+  const [state, setState] = myUseState(0)
 
   return (
     <div className="App">
