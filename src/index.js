@@ -2,14 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 
-
+let _state
 function myUseState(initState) {
-  let state = initState
+  _state = _state || initState
+  console.log(_state)
   function setState(newState) {
-    state = newState
+    _state = newState
     render()
   }
-  return [state, setState]
+  return [_state, setState]
 }
 
 const render = () => {
@@ -18,7 +19,7 @@ const render = () => {
 
 const App = () => {
   // 原 useState: const [n,setN] = useState(0)
-  const [state, setState] = myUseState(0)
+  const [state, setState] = myUseState(1)
 
   return (
     <div className="App">
